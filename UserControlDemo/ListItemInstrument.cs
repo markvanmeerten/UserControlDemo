@@ -12,14 +12,11 @@ namespace UserControlDemo
 {
     public partial class ListItemInstrument : UserControl
     {
+        #region Properties
+        
         private string _title;
         private string _description;
         private Image _image;
-
-        public ListItemInstrument()
-        {
-            InitializeComponent();
-        }
 
         public string Title
         {
@@ -61,15 +58,22 @@ namespace UserControlDemo
             }
         }
 
+        #endregion
+
         public delegate void ClickSomeWeirdButtonHandler(ListItemInstrument sender, EventArgs e);
 
         public event ClickSomeWeirdButtonHandler OnWeirdClick;
+        public ListItemInstrument()
+        {
+            InitializeComponent();
+        }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"[UserControl] You clicked on: {this.Title}");
 
             // Else return EventArgs.Empty();
+            // Of: Cusom class die EventArgs extend
             EventArgs args = new EventArgs();
 
             // Call any listeners
